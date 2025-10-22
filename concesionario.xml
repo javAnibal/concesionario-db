@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<concesionario>
+    <listado-coches>
+        <coche id="1">
+            <matricula>8910JCY</matricula>
+            <marca>nissan</marca>
+            <modelo>pulsar</modelo>
+            <equipamientos/>
+        </coche>
+        <coche id="2">
+            <matricula>8310JCY</matricula>
+            <marca>nissan</marca>
+            <modelo>pulsar</modelo>
+            <equipamientos>
+                <equipamiento>
+                    <extra>Aire acondicionario PRO</extra>
+                </equipamiento>
+            </equipamientos>
+        </coche>
+    </listado-coches>
+</concesionario>

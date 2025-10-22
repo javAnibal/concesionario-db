@@ -1,20 +1,37 @@
 package model;
 
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@XmlRootElement
+
 public class Coche {
     private static Integer contadorID = 0;
 
-    private final int id;
+    @XmlAttribute
+    private int id;
+    @XmlElement
     private String matricula;
+    @XmlElement
     private String marca;
+    @XmlElement
     private String modelo;
-    private Set<Equipamiento> equipamientoList;
+    @XmlElementWrapper(name = "equipamientos")
+    @XmlElement(name = "equipamiento")
+    private Set<Equipamiento> equipamiento;
 
     //==================================== SOBRE CARGA CONSTRUCTORES - COCHE ======================================================
+
+
+    public Coche() {
+    }
 
     public Coche(String matricula, String marca, String modelo) {
 
@@ -22,7 +39,7 @@ public class Coche {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
-        this.equipamientoList = new HashSet<>();
+        this.equipamiento = new HashSet<>();
     }
 
     public Coche(int id, String matricula, String marca, String modelo) {
@@ -35,7 +52,7 @@ public class Coche {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
-        this.equipamientoList = new HashSet<>();
+        this.equipamiento = new HashSet<>();
     }
 
     public Integer getId() {
@@ -47,11 +64,13 @@ public class Coche {
 
 
     public boolean tieneEquipamientos() {
-        return !equipamientoList.isEmpty();
+        return !equipamiento.isEmpty();
     }
 
     public void agregarEquipamiento(Equipamiento equipamiento) {
-        this.equipamientoList.add(equipamiento);
+
+        this.equipamiento.add(equipamiento);
+
 
     }
 
@@ -60,6 +79,7 @@ public class Coche {
      * DEFINO que la clase coche considerará DUPLICADA por el campo matrícula.
      * SE COMPARA por la matrícula y no por su referencia en memoria
      * ES IMPORTANTE -> por su almacenamiento en @Concesionario
+     *
      * @Set<Coche> registroDeCoches = new HashSet<>(); (atributo)
      * En la clase concesionario
      */
@@ -81,7 +101,7 @@ public class Coche {
                 ", matricula='" + matricula + '\'' +
                 ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
-                ", equipamientoList=" + equipamientoList +
+                ", equipamientoList=" + equipamiento +
                 '}';
     }
 }

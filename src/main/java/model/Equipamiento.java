@@ -1,5 +1,8 @@
 package model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.Objects;
 
 
@@ -7,10 +10,14 @@ import java.util.Objects;
  * @Equipamiento -> objeto cuyo principal objetivo es ser parte de la colección de equipamientos de un coche,
  * controlando que no se repitan mediante el uso de [equals - hastCode]
  */
+@XmlRootElement
 public class Equipamiento {
 
     private String extra;
+  
 
+    public Equipamiento() {
+    }
 
     public Equipamiento(String extra) {
         this.extra = extra;

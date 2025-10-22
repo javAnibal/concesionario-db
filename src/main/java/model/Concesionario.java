@@ -1,18 +1,32 @@
 package model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+
 import java.util.HashSet;
 
 import java.util.Set;
 
+@XmlRootElement
 
 public class Concesionario {
 
-    private  Set<Coche> registroDeCoches = new HashSet<>();
+    public Concesionario() {
+    }
 
+    @XmlElementWrapper(name = "listado-coches")
+    @XmlElement(name = "coche")
+    private Set<Coche> registroDeCoches = new HashSet<>();
+
+    public Set<Coche> getRegistroDeCoches() {
+        return registroDeCoches;
+    }
 
     public void agregarNuevoRegistro(Coche coche) {
 
-        this.registroDeCoches.add(coche);
+        registroDeCoches.add(coche);
     }
 
     public void mostrarRegistros() {
