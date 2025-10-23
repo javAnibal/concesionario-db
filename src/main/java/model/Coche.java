@@ -59,6 +59,25 @@ public class Coche {
         return id;
     }
 
+    public static Integer getContadorID() {
+        return contadorID;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Set<Equipamiento> getEquipamiento() {
+        return equipamiento;
+    }
 
     //==================================== MÉT-DOS PROPIOS - COCHE ======================================================
 
